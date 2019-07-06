@@ -12,7 +12,9 @@ public class BFS
     public static void bfs(Graph G, int startVert)
     {
         bool[] visited = new bool[G.Size];
-        // TODO change this for release. Currently references local Queue implementation otherwise.
+        // NOTE: the namespace reference isn't required if you have this file on it's own, but if you download
+        // all the files with this in the same folder, it will mistakenly reference 
+        // the local Queue implementation, and not the built in!
         System.Collections.Generic.Queue<int> q = new System.Collections.Generic.Queue<int>();
 
         visited[startVert] = true;
