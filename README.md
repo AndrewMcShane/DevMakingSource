@@ -1,5 +1,5 @@
 # DevMakingSource
-Source code repository for various Algorithms and Data Structure implementations in multiple languages that will be featured on the website DevMaking. <!-- uncomment on site launch! <a href="www.devmaking.com">DevMaking</a>-->
+Source code repository for various Algorithms and Data Structure implementations in multiple languages that will be featured on the website <a href="www.devmaking.com">DevMaking</a>.
 
 As the site grows and more articles are created, this repo will be updated as well with new implementations and code changes.
 
