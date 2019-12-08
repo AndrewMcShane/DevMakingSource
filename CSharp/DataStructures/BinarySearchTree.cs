@@ -7,7 +7,7 @@ public class Node<T> where T : IComparable<T>
     public T value;
     public Node<T> right;
     public Node<T> left;
-    internal Node<T> prev;
+
 
     public Node(T value, Node<T> right, Node<T> left)
     {
