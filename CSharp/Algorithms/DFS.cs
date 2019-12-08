@@ -49,7 +49,7 @@ public class DFS
             {
                 // foo(); // Something can happen before the visit.
                 dfsAux(G, adjV, visited); // Visiting.
-                // bar(); // Something cal happen after the visit.
+                // bar(); // Something can happen after the visit.
             }
         }
     }
