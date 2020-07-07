@@ -52,7 +52,6 @@ int Stack::peek() {
 
 void Stack::push(int value) {
     if(this->isEmpty()) {
-       
         this->root = new Node(value);
         ++this->size;
     }
