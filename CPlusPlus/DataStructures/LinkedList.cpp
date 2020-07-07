@@ -3,25 +3,22 @@
 
 class Node {
     public:
-        Node::Node(int value)
+        Node(int value)
             : value(value), next(nullptr)
         {}
-        Node::Node(int value, Node* next)
+        Node(int value, Node* next)
             : value(value), next(next)
         {}
-        Node::~Node() {
-            next = nullptr;
-        }
         int value;
         Node* next;
 };
 
 class LinkedList {
     public:
-        LinkedList::LinkedList()
+        LinkedList()
             :size(0), root(nullptr)
         {};
-        LinkedList::~LinkedList();
+        ~LinkedList();
         bool isEmpty();
         bool contains(int value);
         int get(int index);

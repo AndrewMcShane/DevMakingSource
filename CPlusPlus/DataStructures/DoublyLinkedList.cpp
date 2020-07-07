@@ -2,10 +2,10 @@
 
 class Node {
     public:
-        Node::Node(int value)
+        Node(int value)
             : value(value), next(nullptr), prev(nullptr)
         {}
-        Node::Node(int value, Node* next, Node* prev)
+        Node(int value, Node* next, Node* prev)
             : value(value), next(next), prev(prev)
         {}
         int value;
@@ -15,10 +15,10 @@ class Node {
 
 class DoublyLinkedList {
     public:
-        DoublyLinkedList::DoublyLinkedList()
+        DoublyLinkedList()
             : size(0), head(nullptr), tail(nullptr)
         {}
-        DoublyLinkedList::~DoublyLinkedList();
+        ~DoublyLinkedList();
         bool isEmpty();
         bool contains(int value);
         int get(int index);
@@ -141,11 +141,14 @@ void DoublyLinkedList::remove(int value) {
     Node* tmp = this->head;
     while(tmp != nullptr) {
         if(tmp->value == value) {
+            // Remove node references:
             if(tmp->prev != nullptr) tmp->prev->next = tmp->next;
             else this->head = tmp->next;
             if(tmp->next != nullptr) tmp->next->prev = tmp->prev;
             else this->tail = tmp->prev;
             --this->size;
+            // Delete node:
+            delete tmp;
             return;
         }
         tmp = tmp->next;

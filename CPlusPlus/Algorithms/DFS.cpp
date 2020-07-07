@@ -3,9 +3,13 @@
 // Example class of a graph implementation:
 class Graph {
     public:
-        Graph::Graph(int Size) 
+        Graph(int Size) 
             :Size(Size) {
             adj = new std::list<int>[Size];
+        }
+        ~Graph()
+        {
+            delete[] adj;
         }
         std::list<int>* adj;
         int Size;
