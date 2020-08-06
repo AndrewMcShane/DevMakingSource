@@ -25,7 +25,7 @@ class DFS {
     public static function dfsRecursive($G, $startVert) {
         $visited = array();
         for($i = 0; $i < $G->size; $i++) {
-            array_push($visited, $false);
+            array_push($visited, false);
         }
         DFS::dfsAux($G, $startVert, $visited);
     }
