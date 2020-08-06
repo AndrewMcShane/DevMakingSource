@@ -7,7 +7,7 @@ class SimpleHashing {
     private $numBuckets;
     private $size;
 
-    public function __construct($numBuckets = BUCKETS_DEFAULT) {
+    public function __construct($numBuckets = SimpleHashing::BUCKETS_DEFAULT) {
         $this->numBuckets = $numBuckets;
         $this->buckets = array();
         // Initialize an array of size num buckets.
@@ -54,7 +54,7 @@ class SimpleHashing {
 
     public function get($key) {
         $bucket = $this->getHash($key);
-        $tmp = new HashNode($key, $value);
+        $tmp = $this->buckets[$bucket];
         while($tmp) {
             if($tmp->key == $key) {
                 return $tmp->value;
@@ -66,7 +66,7 @@ class SimpleHashing {
 
     public function contains($key) {
         $bucket = $this->getHash($key);
-        $tmp = new HashNode($key, $value);
+        $tmp = $this->buckets[$bucket];
         while($tmp) {
             if($tmp->key == $key) {
                 return true;
@@ -99,7 +99,7 @@ class SimpleHashing {
 
     public function clear() {
         $this->buckets = array();
-        for($i = 0; $i < $numBuckets; $i++) {
+        for($i = 0; $i < $this->numBuckets; $i++) {
             array_push($this->buckets, null);
         }
     }
@@ -117,7 +117,7 @@ class SimpleHashing {
                 while($tmp) {
                     $res .= $tmp->key . ": " . $tmp->value;
                     $count++;
-                    if($count < $size) {
+                    if($count < $this->size) {
                         $res .= ", ";
                     }
                     $tmp = $tmp->next;

@@ -119,8 +119,8 @@ class DoublyLinkedList {
             if($tmp->value == $key) {
                 $newNode = new Node($toAdd, $tmp->next, $tmp);
                 $tmp->next = $newNode;
-                if($newNode->next) $newNode->next->prev = newNode;
-                else $this->tail = newNode;
+                if($newNode->next) $newNode->next->prev = $newNode;
+                else $this->tail = $newNode;
                 $this->size++;
                 return;
             }
@@ -197,7 +197,7 @@ class DoublyLinkedList {
     // Removes the last element from the list.
     public function removeLast() { 
         if($this->isEmpty()) {
-            reutrn;
+            return;
         }
         if($this->size == 1) {
             $this->head = null;
@@ -254,8 +254,8 @@ class Node {
     public $prev;
 
     public function __construct($value, $next, $previous) { 
-        $this->value = value;
-        $this->next = next;
-        $this->prev = previous;
+        $this->value = $value;
+        $this->next = $next;
+        $this->prev = $previous;
     }
 }
