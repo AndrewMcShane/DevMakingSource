@@ -12,7 +12,7 @@ class MinHeap(object):
         if self.currentSize <= 0:
             raise ValueError(self.currentSize)
         else:
-            return self.data[self.currentSize - 1]
+            return self.data[0]
     
     def IsEmpty(self):
         return self.currentSize <= 0
