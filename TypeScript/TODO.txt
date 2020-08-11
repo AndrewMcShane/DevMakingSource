@@ -1,0 +1,23 @@
+TypeScript Examples TODO:
+==========================
+
+TODO: BFS
+TODO: DFS
+TODO: HeapSort
+TODO: MergeSort
+TODO: BinaryHeap
+TODO: BinarySearchTree
+TODO: DoublyLinkedList
+TODO: Graph
+TODO: LinkedList
+TODO: Queue
+TODO: Stack
+TODO: HashTable
+TODO: Trie
+TODO: Builder Pattern
+TODO: ObjectPool
+TODO: Observer
+TODO: Singleton
+TODO: Strategy
+TODO: Subject
+TODO: Visitor
