@@ -1,10 +1,5 @@
 TypeScript Examples TODO:
 ==========================
-
-TODO: BFS
-TODO: DFS
-TODO: HeapSort
-TODO: MergeSort
 TODO: BinaryHeap
 TODO: BinarySearchTree
 TODO: DoublyLinkedList
