@@ -2,9 +2,7 @@ TypeScript Examples TODO:
 ==========================
 TODO: BinaryHeap
 TODO: BinarySearchTree
-TODO: DoublyLinkedList
 TODO: Graph
-TODO: LinkedList
 TODO: Queue
 TODO: Stack
 TODO: HashTable
