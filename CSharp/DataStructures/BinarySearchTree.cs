@@ -96,7 +96,7 @@ public class BinarySearchTree<T> where T: IComparable<T>
 		if (treeNode == null) return null;
 		
 		// We're looking for something bigger.
-		if(treeNode.value.CompareTo(treeNode.value) > 0) {
+		if(value.CompareTo(treeNode.value) > 0) {
 			// go to the right subtree
 			treeNode.right = Remove(value, treeNode.right);
 		}

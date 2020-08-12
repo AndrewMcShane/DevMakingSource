@@ -1,10 +1,6 @@
 TypeScript Examples TODO:
 ==========================
-TODO: BinaryHeap
-TODO: BinarySearchTree
 TODO: Graph
-TODO: Queue
-TODO: Stack
 TODO: HashTable
 TODO: Trie
 TODO: Builder Pattern
