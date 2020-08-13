@@ -1,12 +1,8 @@
 TypeScript Examples TODO:
 ==========================
-TODO: Graph
-TODO: HashTable
-TODO: Trie
 TODO: Builder Pattern
 TODO: ObjectPool
 TODO: Observer
 TODO: Singleton
 TODO: Strategy
-TODO: Subject
 TODO: Visitor
