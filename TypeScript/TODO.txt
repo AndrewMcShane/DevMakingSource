@@ -1,6 +1,5 @@
 TypeScript Examples TODO:
 ==========================
-TODO: Builder Pattern
 TODO: ObjectPool
 TODO: Observer
 TODO: Singleton
