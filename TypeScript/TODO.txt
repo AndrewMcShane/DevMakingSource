@@ -1,7 +1,5 @@
 TypeScript Examples TODO:
 ==========================
-TODO: ObjectPool
 TODO: Observer
-TODO: Singleton
 TODO: Strategy
 TODO: Visitor
