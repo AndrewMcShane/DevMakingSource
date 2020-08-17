@@ -1,5 +1,4 @@
 TypeScript Examples TODO:
 ==========================
-TODO: Observer
 TODO: Strategy
 TODO: Visitor
