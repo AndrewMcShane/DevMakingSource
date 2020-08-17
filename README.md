@@ -8,13 +8,13 @@ As the site grows and more articles are created, this repo will be updated as we
 - Data-Structures
 - (August 2020) Design Patterns
 
-## Current languages implemented (August 11, 2020):
+## Current languages implemented (August 17, 2020):
 - Java
 - C#
 - PHP
 - Python (3.x)
 - C++
-- TypeScript (Partial-Coverage)
+- TypeScript
 
 
 ### Maybe someday languages:
@@ -25,4 +25,3 @@ As the site grows and more articles are created, this repo will be updated as we
 - Ruby
 - JavaScript
 > No current guarantee of these languages being implemented, however languages with overwhelming requests will likely be pushed to the queue.
-
