@@ -2,7 +2,7 @@ class Quicksort
 {
     public sort(arr: number[])
     {
-
+        this.quicksort(arr, 0, arr.length - 1);
     }
 
     private quicksort(arr: number[], low: number, high: number)
