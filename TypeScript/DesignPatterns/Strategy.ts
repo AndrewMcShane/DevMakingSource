@@ -72,3 +72,15 @@ class TradingFirm
     }
     
 }
+
+class StrategyDemo
+{
+    public execute()
+    {
+        let firm = new TradingFirm();
+
+        firm.marketUpdate(TradeConditions.BullMarket); // "Making risky trades!"
+        firm.marketUpdate(TradeConditions.BearMarket); // "Making safe trades."
+        firm.marketUpdate(TradeConditions.RecoveringMarket); // "Making moderate trades."
+    }
+}

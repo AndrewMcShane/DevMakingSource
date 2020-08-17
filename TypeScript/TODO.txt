@@ -1,4 +1,0 @@
-TypeScript Examples TODO:
-==========================
-TODO: Strategy
-TODO: Visitor
