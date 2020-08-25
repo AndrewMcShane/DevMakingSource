@@ -1,9 +1,8 @@
-using System.Collections.Generic;
-using System;
+import java.util.*;
 
 public class Document
 {
-    string content;
+    String content;
 
     public Document()
     {
@@ -12,34 +11,36 @@ public class Document
 
     public void PrintDocument()
     {
-        Console.WriteLine(content);
+        System.out.println(content);
     }
 
-    public void AddContent(string content)
+    public void AddContent(String content)
     {
         this.content += content;
     }
 
     public int Length()
     {
-        return content.Length;
+        return content.length();
     }
 
-    public string CharAt(int index)
+    public String CharAt(int index)
     {
-        return content[index].ToString();
+        return String.valueOf(content.charAt(index));
     }
 
     public void RemoveContent(int numChars)
     {
         if(numChars < 0) return;
-        if(numChars > content.Length - 1)
+        if(numChars > content.length() - 1)
         {
             content = "";
             return;
         }
 
-        content = content.Remove(content.Length - numChars);
+        //content = content.Remove(content.Length - numChars);
+        content = content.substring(0,  content.length() - numChars);
+        
     }
 }
 
@@ -50,12 +51,12 @@ public interface IUndoableCommand
     void Redo();
 }
 
-public class AddContentCommand: IUndoableCommand
+public class AddContentCommand implements IUndoableCommand
 {
     Document document;
-    string content;
+    String content;
 
-    public AddContentCommand(Document document, string content)
+    public AddContentCommand(Document document, String content)
     {
         this.document = document;
         this.content = content;
@@ -68,7 +69,7 @@ public class AddContentCommand: IUndoableCommand
 
     public void Undo()
     {
-        this.document.RemoveContent(content.Length);
+        this.document.RemoveContent(content.length());
     }
 
     public void Redo()
@@ -77,7 +78,7 @@ public class AddContentCommand: IUndoableCommand
     }
 }
 
-public class BackspaceCommand: IUndoableCommand
+public class BackspaceCommand implements IUndoableCommand
 {
     Document document;
     String removedChar;
@@ -120,12 +121,12 @@ public class DocumentWriter
         this.redoStack = new Stack<IUndoableCommand>();
     }
 
-    public void Write(string content)
+    public void Write(String content)
     {
         IUndoableCommand command = new AddContentCommand(this.document, content);
 
-        this.undoStack.Push(command);
-        this.redoStack.Clear();
+        this.undoStack.push(command);
+        this.redoStack.clear();
 
         command.Execute();
     }
@@ -135,28 +136,28 @@ public class DocumentWriter
         if(this.document.Length() == 0) return;
 
         IUndoableCommand command  = new BackspaceCommand(this.document);
-        this.undoStack.Push(command);
-        this.redoStack.Clear();
+        this.undoStack.push(command);
+        this.redoStack.clear();
 
         command.Execute();
     }
 
     public void Undo()
     {
-        if(this.undoStack.Count > 0)
+        if(this.undoStack.size() > 0)
         {
-            IUndoableCommand command = this.undoStack.Pop();
-            this.redoStack.Push(command);
+            IUndoableCommand command = this.undoStack.pop();
+            this.redoStack.push(command);
             command.Undo();
         }
     }
 
     public void Redo()
     {
-        if(this.redoStack.Count > 0)
+        if(this.redoStack.size() > 0)
         {
-            IUndoableCommand command = this.redoStack.Pop();
-            this.undoStack.Push(command);
+            IUndoableCommand command = this.redoStack.pop();
+            this.undoStack.push(command);
             command.Redo();
         }
     }
@@ -166,7 +167,7 @@ public class DocumentWriter
 // Document Writer Demo:
 public class Solution
 {
-    public static void Main(string[] args)
+    public static void Main(String[] args)
     {
         
         Document doc = new Document();
