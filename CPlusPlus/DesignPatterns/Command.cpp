@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iostream>
 
 // The WebBrowser Class:
 class WebBrowser
@@ -13,6 +14,7 @@ class WebBrowser
         void Navigate(std::string url);
         void BookmarkCurrentPage();
         void RemoveBookmark(std::string url);
+        void PrintBookmarks();
     protected:
         std::vector<std::string> bookmarks;
         std::string currentUrl;
@@ -47,12 +49,26 @@ void WebBrowser::BookmarkCurrentPage()
 void WebBrowser::RemoveBookmark(std::string url)
 {
     // Get the item from the list and remove it:
-    std::vector<std::string>::iterator itr =  std::find(bookmarks.begin(), bookmarks.end(), url);
+    std::cout << "Removing Bookmark: " << url <<  std::endl;
+
+    std::vector<std::string>::iterator itr = std::find(bookmarks.begin(), bookmarks.end(), url);
     if(itr != bookmarks.end())
     {
         bookmarks.erase(itr);
     }
 };
+
+void WebBrowser::PrintBookmarks()
+{
+    std::vector<std::string>::iterator itr = this->bookmarks.begin();
+
+    std::cout << "Bookmarks:" << std::endl;
+
+    for(itr; itr != this->bookmarks.end(); ++itr)
+    {
+        std::cout << "\t" << *itr << std::endl;
+    }
+}
 
 
 // The Command abstract class:
@@ -75,7 +91,7 @@ class AddBookmarkCommand: public UndoableCommand
         void Undo() override;
         void Redo() override;
 
-    protected:
+    public:
         WebBrowser* pBrowser;
         std::string url;
 };
@@ -83,6 +99,7 @@ class AddBookmarkCommand: public UndoableCommand
 void AddBookmarkCommand::Execute()
 {
     this->url = this->pBrowser->GetCurrentUrl();
+    std::cout << "Bookmarked: " << this->url << std::endl;
     this->pBrowser->BookmarkCurrentPage();
 };
 
@@ -102,12 +119,13 @@ class Bookmarker
 {
     public:
         Bookmarker(WebBrowser* browser);
+        ~Bookmarker();
         void BookmarkCurrentPage();
         void UndoBookmark();
         void RedoBookmark();
     private:
-        std::vector<AddBookmarkCommand> undoStack;
-        std::vector<AddBookmarkCommand> redoStack;
+        std::vector<AddBookmarkCommand*> undoStack;
+        std::vector<AddBookmarkCommand*> redoStack;
         WebBrowser* pBrowser;
 };
 
@@ -116,24 +134,45 @@ Bookmarker::Bookmarker(WebBrowser* browser)
     this->pBrowser = browser;
 };
 
+Bookmarker::~Bookmarker()
+{
+    // Delete all the objects:
+    std::vector<AddBookmarkCommand*>::const_iterator it = this->undoStack.begin();
+
+    for(; it != this->undoStack.end(); ++it)
+    {
+        delete *it;
+    }
+    this->undoStack.clear();
+
+    it = this->redoStack.begin();
+    for(; it != this->redoStack.end(); ++it)
+    {
+        delete *it;
+    }
+
+    this->redoStack.clear();
+
+}
+
 void Bookmarker::BookmarkCurrentPage()
 {
-    AddBookmarkCommand command = AddBookmarkCommand(this->pBrowser);
+    AddBookmarkCommand* command = new AddBookmarkCommand(this->pBrowser);
     this->undoStack.push_back(command);
     this->redoStack.clear();
 
-    command.Execute();
+    command->Execute();
 };
 
 void Bookmarker::UndoBookmark()
 {
     if(!this->undoStack.empty())
-    {
-        AddBookmarkCommand command = this->undoStack.back();
+    {   
+        AddBookmarkCommand* command = this->undoStack.back();
         this->undoStack.pop_back();
         this->redoStack.push_back(command);
 
-        command.Undo();
+        command->Undo();
     }
 };
 
@@ -141,11 +180,11 @@ void Bookmarker::RedoBookmark()
 {
     if(!this->redoStack.empty())
     {
-        AddBookmarkCommand command = this->redoStack.back();
+        AddBookmarkCommand* command = this->redoStack.back();
         this->redoStack.pop_back();
 
         this->undoStack.push_back(command);
-        command.Redo();
+        command->Redo();
     }
 };
 
@@ -159,11 +198,20 @@ int main()
 
     bookmarker.BookmarkCurrentPage();
 
+    // Print current bookmarks:
+    memeSurfer->PrintBookmarks();
+
     memeSurfer->Navigate("normieMemes.co");
     bookmarker.BookmarkCurrentPage();
 
+    memeSurfer->PrintBookmarks();
+
     bookmarker.UndoBookmark();
 
+    memeSurfer->PrintBookmarks();
+
     bookmarker.RedoBookmark();
+
+    memeSurfer->PrintBookmarks();
 
 }
