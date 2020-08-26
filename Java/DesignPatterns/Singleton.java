@@ -5,7 +5,7 @@ public class Singleton
     private static Singleton instance;
 
     // Private data associated with the singleton:
-    bool logEnabled;
+    boolean logEnabled;
 
     // Private constructor:
     private Singleton()
