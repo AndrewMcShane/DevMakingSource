@@ -156,7 +156,7 @@ class DocumentWriter
 }
 
 
-class Solution
+class CommandSolution
 {
     public execute()
     {
@@ -184,5 +184,5 @@ class Solution
     }
 }
 
-const solution = new Solution();
+const solution = new CommandSolution();
 solution.execute();
