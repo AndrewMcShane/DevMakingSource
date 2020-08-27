@@ -108,28 +108,28 @@ class Suzanne: public Model
 int main()
 {
     // Create shaders:
-        Shader* solidRed = new UnlitColorShader("red");
-        Shader* solidBlue = new UnlitColorShader("blue");
-        Shader* glass = new GlassShader();
+    Shader* solidRed = new UnlitColorShader("red");
+    Shader* solidBlue = new UnlitColorShader("blue");
+    Shader* glass = new GlassShader();
 
-        // Create the models:
-        Model* cube = new CubeModel(solidRed);
-        Model* monkey = new Suzanne(glass);
+    // Create the models:
+    Model* cube = new CubeModel(solidRed);
+    Model* monkey = new Suzanne(glass);
 
-        // Draw the two models:
-        cube->Draw(); // "Rendering Cube with a red color."
-        monkey->Draw(); // "Rendering Suzanne to look like glass."
+    // Draw the two models:
+    cube->Draw(); // "Rendering Cube with a red color."
+    monkey->Draw(); // "Rendering Suzanne to look like glass."
 
-        // Switch out the shader on suzanne:
-        monkey->SetShader(solidBlue);
+    // Switch out the shader on suzanne:
+    monkey->SetShader(solidBlue);
 
-        monkey->Draw(); // "Rendering Suzanne with a blue color."
+    monkey->Draw(); // "Rendering Suzanne with a blue color."
 
-        // Clean up:
-        delete cube;
-        delete monkey;
-
-        delete glass;
-        delete solidBlue;
-        delete solidRed;
+    // Clean up:
+    delete cube;
+    delete monkey;
+    
+    delete glass;
+    delete solidBlue;
+    delete solidRed;
 }
