@@ -5,25 +5,26 @@ import java.util.*;
 // HTTP request result:
 public class WebRequestResult
 {
-    // The time (in minutes, converted to miliseconds) to cahce a request:
+    // The time (in minutes, converted to milliseconds) to cahce a request:
     // We're going to cache for 10 minutes:
     public static final long CACHE_TIME_MINUTES = 10 * 60 * 1000;
 
-
+    // The Flyweight data:
     public String data;
-    private final long cacheUntilMili
+    
+    private final long cacheUntilMilli
 
     public WebRequestResult(String data)
     {
         this.data = data;
-        this.cacheUntilMili = System.currentTimeMillis() + CACHE_TIME_MINUTES;
+        this.cacheUntilMilli = System.currentTimeMillis() + CACHE_TIME_MINUTES;
     }
 
     // Is the result still considered "fresh"?
     // We want it to "expire" after 10 minutes:
     public boolean IsExpired()
     {
-        return System.currentTimeMillis() > this.cacheUntilMili;
+        return System.currentTimeMillis() > this.cacheUntilMilli;
     }
 }
 
