@@ -114,7 +114,7 @@ int main()
     homeDir->Add(new FileType("howToCode", "pdf"));
     homeDir->Add(new FileType("ThingsToDo", "txt"));
     homeDir->Add(new FileType("grandCanyon", "png"));
-    
+      
     // Add home dir to the root:
     root->Add(homeDir);
 
