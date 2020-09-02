@@ -112,7 +112,7 @@ public class Solution
         // Add even more ram!
         mySuperComputer.gigsOfRam = 4096;
         mySuperComputer.cpu = "Octa-Streamed X1 Giga Thread";
-        mySuperComputer.gpu = "Quad  Hive 9series";
+        mySuperComputer.gpu = "Quad Hive 9series";
         
     }
 }
