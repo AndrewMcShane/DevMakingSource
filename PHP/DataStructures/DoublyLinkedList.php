@@ -86,9 +86,8 @@ class DoublyLinkedList {
         }
         else 
         {
-            $tmp = $this->tail;
-            $tmp->prev = new Node($value, $tmp, null);
-            $this->head = $tmp;
+            $this->tail->next = new Node($value, null, $this->tail);
+            $this->tail = $this->tail->next;
             $this->size++;
         }
     }
@@ -102,9 +101,8 @@ class DoublyLinkedList {
             $this->size++;
         }
         else {
-            $tmp = $this->head;
-            $tmp->prev = new Node($value, $tmp, null);
-            $this->head = $tmp;
+            $this->head->prev = new Node($value, $this->head, null);
+            $this->head = $this->head->prev;
             $this->size++;
         }
     }
