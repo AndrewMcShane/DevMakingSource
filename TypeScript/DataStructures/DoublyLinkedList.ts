@@ -99,6 +99,7 @@ class DoublyLinkedList
         if(this.isEmpty())
         {
             let tmp = new DoublyLinkedListNode();
+            tmp.value = value;
             this.head = tmp;
             this.tail = tmp;
             this.size++;

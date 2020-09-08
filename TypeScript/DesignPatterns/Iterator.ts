@@ -37,6 +37,7 @@ module IteratorPattern
             if(this.isEmpty())
             {
                 let tmp = new DLinkNode();
+                tmp.value = value;
                 this.head = tmp;
                 this.tail = tmp;
                 this.size++;
