@@ -1,7 +1,7 @@
 //Chain-of-responsibility pattern in Java
 import java.util.*;
 
-//An enum that we'll attach to every game object to specify type.
+// An enum that we'll attach to every game object to specify type.
 public enum ItemType 
 {
  Sword,
@@ -14,8 +14,8 @@ public enum ItemType
  Undefined
 }
 
-//For brevity, we'll just use a base class.
-//In a real-world scenario, you'd want to subclass for more abilities.
+// For brevity, we'll just use a base class.
+// In a real-world scenario, you'd want to subclass for more abilities.
 public class EquipmentItem 
 {
  public String name;
@@ -28,7 +28,7 @@ public class EquipmentItem
  }
 }
 
-//A storage container class:
+// A storage container class:
 public class ItemChest
 {
  public LinkedList<EquipmentItem> items;
@@ -65,7 +65,7 @@ public class ItemChest
 
 }
 
-//Chain of responsibility:
+// Chain of responsibility:
 public class ChestSorter
 {
  protected ItemType sortType;
@@ -107,7 +107,7 @@ public class ChestSorter
  }
 }
 
-//The Null sorter gracefully handles a scenario where no item has a fit:
+// The Null sorter gracefully handles a scenario where no item has a fit:
 public class NullSorter extends ChestSorter
 {
  public NullSorter(ItemChest chest)
@@ -123,7 +123,7 @@ public class NullSorter extends ChestSorter
 }
 
 
-//Demo of the Chain of responsibility:
+// Demo of the Chain of responsibility:
 public class Solution
 {
  public static void main(String[] args)

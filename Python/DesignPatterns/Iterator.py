@@ -37,7 +37,7 @@ class DoublyLinkedList(object):
 # Forward Iterator:
 class DLinkIterator(object):
     def __init__(self, startNode):
-        self.current = startNode;
+        self.current = startNode
 
     def hasNext(self):
         return self.current != None
@@ -52,7 +52,7 @@ class DLinkIterator(object):
 # Backward Iterator:
 class DLinkReverseIterator(object):
     def __init__(self, startNode):
-        self.current = startNode;
+        self.current = startNode
 
     def hasNext(self):
         return self.current != None
@@ -68,10 +68,10 @@ class DLinkReverseIterator(object):
 # Demo:
 myList = DoublyLinkedList()
 
-myList.addLast("Hello");
-myList.addLast("World");
-myList.addLast("Goodbye");
-myList.addLast("World");
+myList.addLast("Hello")
+myList.addLast("World")
+myList.addLast("Goodbye")
+myList.addLast("World")
 
 # Iterate the list forwards:
 forwardIter = myList.getIterator()
