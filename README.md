@@ -24,4 +24,6 @@ As the site grows and more articles are created, this repo will be updated as we
 - Swift
 - Ruby
 - JavaScript
+- Rust
+- Dart
 > No current guarantee of these languages being implemented, however languages with overwhelming requests will likely be pushed to the queue.
